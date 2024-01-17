@@ -12,10 +12,11 @@ namespace trilha_net_desafio_poo_DIO.models{
         private string IMEI;
         private int Memoria;
 
-        private string ImeiGenerator(int lenght){
+//Utilizei um algoritmo para gerar automaticamente o número de IMEI, ele utiliza a classe `Random` e gera strings aleatórios pela string `chars` com o tamanho 15 (que é o padrão do IMEI).
+        private string ImeiGenerator(){
             Random random = new();
             string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            string randomKey = new string(Enumerable.Repeat(chars, lenght).Select(s => s[random.Next(s.Length)]).ToArray());
+            string randomKey = new string(Enumerable.Repeat(chars, 15).Select(s => s[random.Next(s.Length)]).ToArray());
             return randomKey;
         }
 
@@ -23,7 +24,7 @@ namespace trilha_net_desafio_poo_DIO.models{
             Numero = numero;
             // TODO: Passar os parametros do contrutor para as props
             Modelo = modelo;
-            IMEI = ImeiGenerator(15);
+            IMEI = ImeiGenerator();
             Memoria = memoria;
         }
 
